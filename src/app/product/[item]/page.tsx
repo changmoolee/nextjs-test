@@ -13,3 +13,9 @@ export function generateStaticParams() {
     item: product,
   }));
 }
+
+export function generateMetadata({ params }: TItemPage) {
+  return {
+    title: `제품의 이름: ${params.item}`,
+  };
+}
