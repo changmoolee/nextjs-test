@@ -19,7 +19,7 @@ export async function getProducts(): Promise<Product[]> {
 }
 
 /**
- * 제품 id를 인자로 받아 제품의 객체를 반환하는 함수 (미완성)
+ * 제품 id를 인자로 받아 제품 데이터(객체)를 반환하는 함수 (없을 경우 undefined 반환)
  */
 export async function getProduct(id: string): Promise<Product | undefined> {
   const products = await getProducts();
