@@ -5,7 +5,7 @@ import { getProducts } from "@/service/products";
 /**
  * 3초마다 revalidate 요청
  */
-export const revalidate = 3;
+// export const revalidate = 3;
 
 export default async function ProductPage() {
   /**
@@ -13,13 +13,28 @@ export default async function ProductPage() {
    */
   const products = await getProducts();
 
+  const res = await fetch("https://meowfacts.herokuapp.com", {
+    next: { revalidate: 3 },
+    // 0이면 SSR이 되어버림
+
+    // cache : "force-cache" // SSG
+    // cache :"no-store" // SSR
+  });
+
+  const data = await res.json();
+
+  const factText = data.data[0];
+
   return (
-    <ul className={styles.ul}>
-      {products.map((product, index) => (
-        <li key={index}>
-          <Link href={`/product/${product.id}`}>{product.name}</Link>
-        </li>
-      ))}
-    </ul>
+    <>
+      <ul className={styles.ul}>
+        {products.map((product, index) => (
+          <li key={index}>
+            <Link href={`/product/${product.id}`}>{product.name}</Link>
+          </li>
+        ))}
+      </ul>
+      <article className={styles.article}>{factText}</article>
+    </>
   );
 }
