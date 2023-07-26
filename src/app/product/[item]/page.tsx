@@ -1,6 +1,11 @@
 import NotFoundPage from "@/app/product/not-found";
 import { getProduct, getProducts } from "@/service/products";
 
+/**
+ * 3초마다 revalidate 요청
+ */
+export const revalidate = 3;
+
 type TItemPage = {
   params: {
     item: string;
