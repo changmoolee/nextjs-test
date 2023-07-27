@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import { getProducts } from "@/service/products";
+import MeowArticle from "@/components/MeowArticle";
 
 /**
  * 3초마다 revalidate 요청
@@ -13,18 +14,6 @@ export default async function ProductPage() {
    */
   const products = await getProducts();
 
-  const res = await fetch("https://meowfacts.herokuapp.com", {
-    next: { revalidate: 3 },
-    // 0이면 SSR이 되어버림
-
-    // cache : "force-cache" // SSG
-    // cache :"no-store" // SSR
-  });
-
-  const data = await res.json();
-
-  const factText = data.data[0];
-
   return (
     <>
       <ul className={styles.ul}>
@@ -34,7 +23,7 @@ export default async function ProductPage() {
           </li>
         ))}
       </ul>
-      <article className={styles.article}>{factText}</article>
+      <MeowArticle />
     </>
   );
 }
