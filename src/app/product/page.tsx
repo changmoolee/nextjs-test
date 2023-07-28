@@ -1,11 +1,12 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import { getProducts } from "@/service/products";
+import MeowArticle from "@/components/MeowArticle";
 
 /**
  * 3초마다 revalidate 요청
  */
-export const revalidate = 3;
+// export const revalidate = 3;
 
 export default async function ProductPage() {
   /**
@@ -14,12 +15,15 @@ export default async function ProductPage() {
   const products = await getProducts();
 
   return (
-    <ul className={styles.ul}>
-      {products.map((product, index) => (
-        <li key={index}>
-          <Link href={`/product/${product.id}`}>{product.name}</Link>
-        </li>
-      ))}
-    </ul>
+    <>
+      <ul className={styles.ul}>
+        {products.map((product, index) => (
+          <li key={index}>
+            <Link href={`/product/${product.id}`}>{product.name}</Link>
+          </li>
+        ))}
+      </ul>
+      <MeowArticle />
+    </>
   );
 }
