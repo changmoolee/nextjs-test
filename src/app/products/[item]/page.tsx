@@ -1,4 +1,4 @@
-import NotFoundPage from "@/app/product/not-found";
+import NotFoundPage from "@/app/products/not-found";
 import { getProduct, getProducts } from "@/service/products";
 
 /**
