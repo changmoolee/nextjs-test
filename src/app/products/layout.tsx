@@ -21,6 +21,7 @@ export default function ProductLayout({ children }: IProductLayoutProps) {
         <Link href={"products/women"}>여성옷</Link>
         <Link href={"products/men"}>남성옷</Link>
       </nav>
+      {/* 리액트 서스펜스로 감싸지는 부분 (로딩) */}
       {children}
     </div>
   );
