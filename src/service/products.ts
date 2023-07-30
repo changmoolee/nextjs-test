@@ -11,8 +11,6 @@ export type Product = {
  * 제품 리스트를 반환하는 함수
  */
 export async function getProducts(): Promise<Product[]> {
-  for (let i = 0; i < 10000000; i++) {}
-
   const filePath = path.join(process.cwd(), "data", "products.json");
 
   const data = await fs.readFile(filePath, "utf-8");

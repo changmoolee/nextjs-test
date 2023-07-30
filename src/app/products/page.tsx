@@ -2,6 +2,8 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { getProducts } from "@/service/products";
 import MeowArticle from "@/components/MeowArticle";
+import Image from "next/image";
+import clothesImage from "../../../public/images/clothes.jpeg";
 
 /**
  * 3초마다 revalidate 요청
@@ -17,6 +19,8 @@ export default async function ProductPage() {
   return (
     <>
       <ul className={styles.ul}>
+        <Image src={clothesImage} alt="Clothes" priority />
+
         {products.map((product, index) => (
           <li key={index}>
             <Link href={`/products/${product.id}`}>{product.name}</Link>
