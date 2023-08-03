@@ -1,5 +1,6 @@
 import NotFoundPage from "@/app/products/not-found";
 import { getProduct, getProducts } from "@/service/products";
+import { redirect } from "next/navigation";
 
 /**
  * 3초마다 revalidate 요청
@@ -17,8 +18,10 @@ export default async function ProducttPage({ params: { item } }: TItemPage) {
    */
   const product = await getProduct(item);
 
+  // 존재하지 않는 product를 입력했다면
   if (!product) {
-    NotFoundPage();
+    // NotFoundPage();
+    redirect("/about");
   }
 
   return <div>{product?.name} Page!</div>;
