@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <>
-      <h1>홈페이지다!!!!!</h1>;
+      <h1>홈페이지다!!!!! 버전은 2입니다.</h1>;
       <GoProductsButton />
       <Image
         src="https://images.unsplash.com/photo-1441986300917-64674bd600d8"
